@@ -1,0 +1,18 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Creating an IAM User
+
+Resources:
+  MyUser:
+    Type: 'AWS::IAM::User'
+    Properties:
+      UserName: Developer # give a name to this user
+      LoginProfile: # specify a password for this user
+        Password: Ralph123ael.
+        PasswordResetRequired: true # make this user to set a new password on next sign-in
+      Path: '/'
+      Groups: # attach this user to the list of existing groups
+          - testgroupA
+          - testgroupB
+      ManagedPolicyArns: # list of ARNs of IAM managed policies that you want to attach to the user
+        - arn:aws:iam::aws:policy/AmazonEC2FullAccess # provides administrator access to AWS 
+        
